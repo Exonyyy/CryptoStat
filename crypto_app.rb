@@ -59,8 +59,6 @@ class CryptoApp
 
     TkLabel.new(root, text: 'Машина времени (вложили 100$ год назад):').pack(pady: 5)
     portfolio_text = TkText.new(root, width: 45, height: 3, font: 'Courier 10', background: 'white').pack
-
-    # --- Логика кнопок (Замыкания) ---
     
     # Кнопка смены темы
     theme_btn.command = proc do
