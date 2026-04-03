@@ -1,4 +1,4 @@
-# CryptoTrackerPro
+# CryptoStat
 
 RubyGem для анализа криптовалют:
 - GUI-режим (Tk)
@@ -6,7 +6,7 @@ RubyGem для анализа криптовалют:
 - расчет "машины времени" для инвестиции на год
 
   
-Имя гема: `crypto_tracker_pro`
+Имя гема: `CryptoStat`
 
 ## Что умеет
 
