@@ -2,7 +2,7 @@
 
 Профессиональный Ruby gem для анализа криптовалют с графическим интерфейсом и полным тестовым покрытием.
 
-## ✨ Возможности
+## Возможности
 
 - 📊 Получение исторических цен (365 дней) через CoinGecko API
 - 📈 Анализ минимума/максимума/средней цены за периоды 7/30/365 дней
@@ -13,7 +13,7 @@
 - 📉 Визуализация цен за последние 30 дней
 - ✅ Полное тестовое покрытие (100+ тестов)
 
-## 📦 Установка
+## Установка
 
 Добавьте эту строку в ваш `Gemfile`:
 
@@ -33,44 +33,13 @@ $ bundle install
 $ gem install crypto_stat
 ```
 
-## 🚀 Использование
-
-### Базовый пример
-
-```ruby
-require 'crypto_stat'
-
-# Инициализация
-api = CryptoStat::ApiClient.new
-analyzer = CryptoStat::Analyzer.new
-portfolio = CryptoStat::PortfolioCalculator.new
-
-# Получение данных о Биткоине
-prices = api.fetch_data('Биткоин (BTC)')
-
-# Конвертация в EUR
-prices_eur = api.convert_prices(prices, 'EUR')
-
-# Анализ
-report = analyzer.build_report_text(prices_eur, 'EUR')
-puts report
-
-# Расчет инвестиции
-investment_result = portfolio.calculate_investment(prices, 100)
-puts investment_result
-
-# Расчет ROI
-roi = portfolio.calculate_roi(prices, 100)
-puts "ROI: #{roi}%"
-```
-
 ### Запуск GUI приложения
 
 ```bash
 ruby bin/crypto_app
 ```
 
-## 📁 Структура проекта
+## Структура проекта
 
 ```
 CryptoStat/
@@ -93,14 +62,13 @@ CryptoStat/
 │   └── crypto_app                    # Исполняемый файл приложения
 ├── Gemfile                           # Зависимости проекта
 ├── Rakefile                          # Задачи автоматизации
-├── crypto_stat.gemspec               # Спецификация gem'а
+├── crypto_stat.gemspec               # Спецификация гема
 ├── README.md                         # Документация
-├── CONTRIBUTING.md                   # Руководство для разработчиков
-├── LICENSE                           # Лицензия MIT
+├── LICENSE                           # Лицензия 
 └── .gitignore                        # Git configuration
 ```
 
-## 🧪 Запуск тестов
+## Запуск тестов
 
 ### Все тесты
 
@@ -108,19 +76,7 @@ CryptoStat/
 bundle exec rake test
 ```
 
-### Конкретный тестовый файл
-
-```bash
-bundle exec rake test TEST=test/api_client_test.rb
-```
-
-### Конкретный тест
-
-```bash
-bundle exec rake test TEST=test/analyzer_test.rb TESTOPTS="--name=test_get_symbol_usd"
-```
-
-### Статистика тестов
+### тесты
 
 - **Всего тестов**: 44+
 - **ApiClient**: 6 тестов
@@ -129,81 +85,8 @@ bundle exec rake test TEST=test/analyzer_test.rb TESTOPTS="--name=test_get_symbo
 - **ChartDrawer**: 6 тестов
 - **Интеграционные**: 7 тестов
 
-## 📚 API Документация
 
-### CryptoStat::ApiClient
-
-```ruby
-api = CryptoStat::ApiClient.new
-
-# Доступные монеты
-api.get_coins_list
-# => ["Биткоин (BTC)", "Эфириум (ETH)", "ТОН (TON)"]
-
-# Получить исторические данные (365 дней)
-prices = api.fetch_data('Биткоин (BTC)')
-# => [29250.5, 29301.2, 29450.1, ..., 43250.8]
-
-# Конвертировать цены
-converted = api.convert_prices(prices, 'EUR')
-# => [26910.46, 26956.1, 27094.09, ...]
-```
-
-### CryptoStat::Analyzer
-
-```ruby
-analyzer = CryptoStat::Analyzer.new
-
-# Получить символ валюты
-analyzer.get_symbol('RUB')  # => '₽'
-analyzer.get_symbol('EUR')  # => '€'
-analyzer.get_symbol('USD')  # => '$'
-
-# Анализ периода
-result = analyzer.analyze_period(prices, 30)
-# => {
-#   min: 28500.5,
-#   max: 30200.1,
-#   avg: 29350.2,
-#   trend: "Рост 📈 (+3.5%)"
-# }
-
-# Полный отчет
-report = analyzer.build_report_text(prices, 'USD')
-# Выведет отформатированный отчет с анализом за 7/30/365 дней
-```
-
-### CryptoStat::PortfolioCalculator
-
-```ruby
-portfolio = CryptoStat::PortfolioCalculator.new
-
-# Результат инвестиции
-result = portfolio.calculate_investment(prices, 100)
-# => "Вложив 100, сейчас вы бы имели 150.5\nПрибыль: +50.5 🤑"
-
-# ROI (Return On Investment)
-roi = portfolio.calculate_roi(prices, 100)
-# => 50.5
-```
-
-### CryptoStat::ChartDrawer
-
-```ruby
-chart_drawer = CryptoStat::ChartDrawer.new
-
-# Цены за месяц
-month_prices = chart_drawer.get_month_prices(prices)
-# => [28500.5, 28600.1, 28750.3, ...]
-
-# Построить холст (требуется Tk)
-canvas = chart_drawer.build_canvas(root_window)
-
-# Нарисовать график
-chart_drawer.draw(canvas, prices)
-```
-
-## 👥 Команда разработчиков
+## Команда
 
 | Участник | Модуль | Описание |
 | :--- | :--- | :--- |
@@ -213,7 +96,7 @@ chart_drawer.draw(canvas, prices)
 | **Кожатиков Глеб** | `chart_drawer.rb` | Визуализация графиков на холсте |
 | **Акинин Юрий** | `portfolio.rb` | Расчет инвестиций, архитектура проекта |
 
-## 🔧 Разработка
+## Разработка
 
 ### Подготовка
 
@@ -230,21 +113,6 @@ bundle install
 3. Напишите тесты в `test/`
 4. Запустите тесты: `bundle exec rake test`
 
-Подробнее смотрите [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## 📝 Лицензия
-
-Проект лицензирован под MIT License. Смотрите [LICENSE](LICENSE)
-
-## 🙏 Благодарности
-
-- [CoinGecko API](https://www.coingecko.com/en/api) - источник данных
-- Ruby community за отличные инструменты
-- Minitest за простоту тестирования
-
-## 📞 Поддержка
-
-Если у вас есть вопросы или проблемы:
-1. Проверьте [CONTRIBUTING.md](CONTRIBUTING.md)
-2. Создайте Issue в репозитории
-3. Отправьте Pull Request
+## Лицензия
+Проект лицензирован под MIT License.
