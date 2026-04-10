@@ -1,7 +1,8 @@
+require 'tk'
 module CryptoStat
   class ChartDrawer
     def build_canvas(parent_frame)
-      require 'tk'
+     
       TkCanvas.new(parent_frame) do
         width 380
         height 150
@@ -11,9 +12,9 @@ module CryptoStat
     end
 
     def draw(canvas, prices)
-      raise ArgumentError, "Массив цен пуст" if prices.empty?
+  
 
-      month_prices = prices.last(30)
+      month_prices = get_month_prices(prices)
       return if month_prices.length < 2
 
       canvas.delete('all')
@@ -36,7 +37,6 @@ module CryptoStat
         points << y
       end
 
-      require 'tk'
       TkcLine.new(canvas, points, fill: 'blue', width: 2)
     end
 
