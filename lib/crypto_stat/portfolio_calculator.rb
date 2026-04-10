@@ -1,8 +1,8 @@
 module CryptoStat
   class PortfolioCalculator
     def calculate_investment(prices, amount_invested)
-      raise ArgumentError, "Массив цен пуст" if prices.empty?
-      raise ArgumentError, "Сумма должна быть положительной" if amount_invested <= 0
+      raise ArgumentError, "Массив цен пуст!" if prices.empty?
+      raise ArgumentError, "Сумма должна быть положительной!" if amount_invested <= 0
       raise ArgumentError, "Недостаточно исторических данных (нужно минимум 365 дней)" if prices.length < 365
 
       price_1_year_ago = prices.first
