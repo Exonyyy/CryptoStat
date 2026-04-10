@@ -1,14 +1,14 @@
 module CryptoStat
   class PortfolioCalculator
     def calculate_investment(prices, amount_invested)
-      raise ArgumentError, "Prices array is empty" if prices.empty?
-      raise ArgumentError, "Amount must be positive" if amount_invested <= 0
-      raise ArgumentError, "Not enough historical data (need at least 365 days)" if prices.length < 365
+      raise ArgumentError, "Массив цен пуст" if prices.empty?
+      raise ArgumentError, "Сумма должна быть положительной" if amount_invested <= 0
+      raise ArgumentError, "Недостаточно исторических данных (нужно минимум 365 дней)" if prices.length < 365
 
       price_1_year_ago = prices.first
       current_price = prices.last
 
-      raise ArgumentError, "Initial price cannot be zero" if price_1_year_ago.zero?
+      raise ArgumentError, "Начальная цена не может быть нулевой" if price_1_year_ago.zero?
 
       coins_bought = amount_invested.to_f / price_1_year_ago
       current_value = coins_bought * current_price
@@ -22,8 +22,8 @@ module CryptoStat
     end
 
     def calculate_roi(prices, amount_invested)
-      raise ArgumentError, "Prices array is empty" if prices.empty?
-      raise ArgumentError, "Amount must be positive" if amount_invested <= 0
+      raise ArgumentError, "Массив цен пуст" if prices.empty?
+      raise ArgumentError, "Сумма должна быть положительной" if amount_invested <= 0
 
       price_1_year_ago = prices.first.to_f
       current_price = prices.last.to_f

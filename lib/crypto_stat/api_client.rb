@@ -17,7 +17,7 @@ module CryptoStat
 
     def fetch_data(coin_name)
       coin_id = COINS[coin_name]
-      raise ArgumentError, "Unknown coin: #{coin_name}" unless coin_id
+      raise ArgumentError, "Неизвестная монета: #{coin_name}" unless coin_id
 
       @last_coin_id = coin_id
       
@@ -27,11 +27,13 @@ module CryptoStat
       data = JSON.parse(response)
 
       data['prices'].map { |item| item[1] }
+    rescue ArgumentError => e
+      raise e
     rescue JSON::ParserError => e
-      warn "⚠️ Failed to parse API response: #{e.message}. Using mock data..."
+      warn "⚠️ Ошибка парсинга API ответа: #{e.message}. Используются тестовые данные..."
       generate_mock_data
     rescue StandardError => e
-      warn "⚠️ API request failed: #{e.message}. Using mock data..."
+      warn "⚠️ Ошибка запроса API: #{e.message}. Используются тестовые данные..."
       generate_mock_data
     end
 
@@ -59,7 +61,7 @@ module CryptoStat
     end
 
     def convert_prices(prices, currency)
-      raise ArgumentError, "Unknown currency: #{currency}" unless RATES.key?(currency)
+      raise ArgumentError, "Неизвестная валюта: #{currency}" unless RATES.key?(currency)
 
       rate = RATES[currency]
       prices.map { |price| price * rate }

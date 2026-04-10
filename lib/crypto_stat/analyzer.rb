@@ -12,8 +12,8 @@ module CryptoStat
     end
 
     def analyze_period(prices, days)
-      raise ArgumentError, "Prices array is empty" if prices.empty?
-      raise ArgumentError, "Days must be positive" if days <= 0
+      raise ArgumentError, "Массив цен пуст" if prices.empty?
+      raise ArgumentError, "Количество дней должно быть положительным" if days <= 0
 
       period = prices.last(days)
 
@@ -41,8 +41,8 @@ module CryptoStat
     end
 
     def build_report_text(prices, currency)
-      raise ArgumentError, "Prices array is empty" if prices.empty?
-      raise ArgumentError, "Unknown currency: #{currency}" unless ['USD', 'EUR', 'RUB'].include?(currency)
+      raise ArgumentError, "Массив цен пуст" if prices.empty?
+      raise ArgumentError, "Неизвестная валюта: #{currency}" unless ['USD', 'EUR', 'RUB'].include?(currency)
 
       symbol = get_symbol(currency)
       week = analyze_period(prices, 7)

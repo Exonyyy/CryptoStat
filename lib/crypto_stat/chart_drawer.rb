@@ -11,7 +11,7 @@ module CryptoStat
     end
 
     def draw(canvas, prices)
-      raise ArgumentError, "Prices array is empty" if prices.empty?
+      raise ArgumentError, "Массив цен пуст" if prices.empty?
 
       month_prices = prices.last(30)
       return if month_prices.length < 2
@@ -41,7 +41,7 @@ module CryptoStat
     end
 
     def get_month_prices(prices)
-      raise ArgumentError, "Prices array is empty" if prices.empty?
+      raise ArgumentError, "Массив цен пуст" if prices.empty?
       prices.last(30)
     end
   end
